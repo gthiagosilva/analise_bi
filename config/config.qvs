@@ -1,0 +1,68 @@
+SET ThousandSep='.';
+SET DecimalSep=',';
+SET MoneyThousandSep='.';
+SET MoneyDecimalSep=',';
+SET MoneyFormat='R$ #.##0,00;-R$ #.##0,00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss[.fff]';
+SET MonthNames='jan;fev;mar;abr;mai;jun;jul;ago;set;out;nov;dez';
+SET DayNames='seg;ter;qua;qui;sex;sáb;dom';
+SET LongMonthNames='janeiro;fevereiro;março;abril;maio;junho;julho;agosto;setembro;outubro;novembro;dezembro';
+SET LongDayNames='segunda-feira;terça-feira;quarta-feira;quinta-feira;sexta-feira;sábado;domingo';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='pt-BR';
+
+/*
+	@SUB VPATHARCHIVE = vPathArchive
+	DESCRIPTION - Função para obter as variáveis de path dos Arquivos Gerais utilizados
+*/
+Sub vPathArchive
+
+	SET vPathDataMirrors = '..\..\files\dataMirrors\';
+	SET vPathDataTransformed = '..\..\files\dataTransformed\';
+	SET vPathSpreadSheets = '..\..\files\spreadsheets\';
+	SET vPathAppPbi = '..\..\app\pbi';
+	SET vPathAppQlik = '..\..\app\qlik';
+	SET vPathImagens = '..\..\files\images\';
+	SET vPathStorePbi = '..\..\files\storage_pbi\';
+	SET vPathConfig = '..\..\..\config\';
+
+End Sub
+
+/*
+	@SUB VSTOREFILE - vStoreFile
+	DESCRIPTION - Função para AUTOMATIZAR os Stores nos projetos
+	PARAMETERS - vPath, vClient, vType, vTypeProperties
+		* vPath - Caminho até o diretório onde será feito o Store
+		* vClient - Nome do cliente, caso a pasta necessite dele
+		* vType - Extensão do arquivo que será criado (ex: qvd, cvs, txt)
+		* vTypeProperties - Campo para inclusão dos parâmetros arquivo (delimiter ou apenas a extensão)
+*/
+Sub vStoreFile(vPath, vClient, vType, vTypeProperties);
+
+	If Len('$(vType)') < 1 Then 
+		Let vType = 'qvd';
+	EndIf
+
+	If Len('$(vTypeProperties)') < 1 Then 
+		Let vTypeProperties = 'qvd';
+	EndIf
+
+	LET table = TableName(0);
+	SET ErrorMode = 0;
+
+	DO WHILE ScriptErrorCount < 1
+
+	     STORE [$(table)] into [$(vPath)$(vClient)\$(table).$(vType)] ($(vTypeProperties));
+	     DROP TABLE [$(table)];
+	     LET table = TableName(0);
+
+	LOOP
+
+	SET ErrorMode =1;
+
+End Sub
