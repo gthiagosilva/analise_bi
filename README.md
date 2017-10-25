@@ -1,6 +1,10 @@
 Teste de Aptidão para a vaga de Analista de Business Intelligence
 ===
 
+## Sumário
+
+- [Observações Gerais](observações-gerais)
+
 A Neoway está com uma vaga para Analista de BI para atuar em Floripa.
 A equipe de BI da Neoway trabalha na construção de aplicações de Business Intelligence para clientes de maior relevância no mercado nacional e internacional.
 São utilizadas as ferramentas de BI (QlikView, Power BI) para a apresentação das views, porém, praticamente todo o processo de ETL é feito com QlikView, ficando alguns jobs a cargo do Pentaho.
