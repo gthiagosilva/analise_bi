@@ -108,4 +108,4 @@ Para a View, precisamos das seguintes análises:
 - Este mesmo arquivo que será criado em dataCloud poderá realizar os stores das dims, fatos ou linktables em storage_pbi, onde o Power BI consumirá os dados de lá;
 - Para que fosse possível subir toda a estrutura de diretórios no Git, foi necessário criar um arquivo file.txt. Pedimos por gentileza que ignorem ou excluam estes arquivos ;)
 
-### Aos cadidatos, tenham um bom teste :D ### 
+### Aos cadidatos, tenham um ótimo teste :D ### 
