@@ -21,6 +21,7 @@ Serão analisados 4 pontos para avaliar a aptidão do candidato a vaga
 
 ## Estrutura do projeto
 
+´´´
 teste_bi
 	├───app
 	│   ├───pbi
@@ -36,6 +37,7 @@ teste_bi
 	    ├───dataCloud
 	    ├───extract
 	    └───transform
+´´´
 
 **loads**
 
